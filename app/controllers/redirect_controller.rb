@@ -90,7 +90,7 @@ class RedirectController < ContentController
       path = url_root + path unless url_root.nil? or path[0,url_root.length] == url_root
       redirect_to path, :status => 301
     else
-      render :text => "Page not found", :status => 404
+      render :file => File.join(Rails.root, "public/404.html"), :status => 404, :layout => false
     end
   end
 

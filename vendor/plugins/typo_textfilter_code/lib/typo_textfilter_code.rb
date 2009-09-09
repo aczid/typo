@@ -52,7 +52,6 @@ have syntax highlighting.
           text = CodeRay.scan(text, lang.to_sym).span(options)
         rescue
         end
-        text = "<notextile>#{text}</notextile>"
 
         if(title)
           titlecode="<div class=\"codetitle\">#{title}</div>"
