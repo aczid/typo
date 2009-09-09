@@ -1,0 +1,602 @@
+/*--------------------------------------------------------------
+ Header
+ --------------------------------------------------------------*/
+
+#header { 
+  padding-right: 1em;
+  padding-top: 0.2em;
+  background: #000;
+  height: 144px;
+}
+
+#header a:link,
+#header a:visited { 
+	color:#fff;
+	text-decoration: none;
+}
+
+#header a:hover,
+#header a:active {
+	color:#fff;
+	text-decoration: none;
+}
+
+#header h1 {
+  font: bold 400% georgia, serif;
+	letter-spacing: -1px; 
+	margin: 0px;
+	text-align:center;
+}
+
+#header h1 a {
+	display: block;
+	height: 144px;
+	width: 800px;
+	text-decoration: none;
+	z-index: 1000;
+	background: url(/images/theme/top.png) 0 0 no-repeat;
+}
+
+#header h1 a span {
+	display:none;
+}
+
+#header h2 a span {
+	position: absolute;
+	top: 122px;
+	font: bold 17px monospace;  
+	margin: 0px;
+	margin-left: 264px;
+	color: #000 !important;
+}
+
+#header p {
+  float: right;
+}
+
+/*--------------------------------------------------------------
+ Content
+ --------------------------------------------------------------*/
+
+#content {
+}
+
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5 { 
+  font-family: "lucidamac bold", "lucida grande", arial, sans-serif; 
+	letter-spacing: -1px;
+	font-size: 18px;
+	background: transparent;
+	margin: 1.2em 0 0.3em;	
+}
+
+#content h1 { 
+	font-size: 24px;
+	margin: 0 0 0.3em;	
+}
+
+#content h2 { 
+	font-size: 22px;
+	margin: 0 0 0.3em;	
+}
+
+#content h3 { 
+	font-size: 20px;
+	margin: 1.2em 0 0.3em;	
+}
+
+#content h4 { 
+	font-size: 18px;
+	margin: 1.2em 0 0.3em;	
+}
+
+#content h5 {
+	color: #000;
+	margin-left: 0.5em;
+}
+
+#content p {
+	margin-bottom:1.2em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+#content ul,
+#content ol {
+	margin: 1em;
+	padding:0;
+}
+
+#content ul {
+	list-style-type: square;
+}
+
+#content li {
+	line-height: 15px; 
+	margin: 0 0 0 1em; padding: 0;
+}
+
+#content blockquote {
+	color: #555;
+	border-left: 5px solid #ccc; 
+	margin: 1.3em 1em; padding: 0 1em;
+}
+
+#content code { 
+	font: normal 12px "bitstream vera sans mono", monaco "lucida console", "courier new", courier, serif;
+}
+
+#content pre {
+	color: #63FF00;
+	overflow: auto;
+	font: normal 12px "bitstream vera sans mono", monaco "lucida console", "courier new", courier, serif;
+	margin: 0.9em 0; padding: 8px;
+}
+
+/* Article Entries - class names based on http://microformats.org/wiki/hatom] */
+#content .atomentry {
+	margin: 0 0 3em 0;
+}
+
+#content .post {
+  margin-top :1em;
+	margin-left: 0.7em;
+	margin-bottom: 0.3em;
+	clear: right;
+}
+
+#content .post h2 a {
+  text-decoration: none;
+	font-size: 20px;
+	line-height: 94%;
+	letter-spacing: -1.5px; 
+	color: #222;
+}
+
+#content .atomentry .title {
+	font-size: 20px;
+	line-height: 94%;
+	letter-spacing: -1.5px; 
+	margin: 0;
+	margin-left: 0.7em;
+	margin-bottom: -0.3em;
+	clear: right;
+}
+
+
+#content .atomentry .title a:link,
+#content .atomentry .title a:visited { 
+	color: #222;
+	text-decoration: none;
+}
+
+#content .atomentry .title a:hover,
+#content .atomentry .title a:active { 
+	color: #222;
+	background: transparent;
+}
+
+#content .atomentry .title .comment_count { color: #8D2600; }
+
+#content .atomentry .author {
+	color: #333;
+	letter-spacing: -1px;
+	margin: 0.5em 0 1em;
+	float:left;
+}
+
+#content .atomentry .author cite a,
+#content .atomentry .author cite a:hover { /* author mailto: link (if any) */
+	color: #000; background: transparent;
+	text-decoration: none;
+}
+
+#content .atomentry .author abbr { /* posted date */
+	color: #000;
+	letter-spacing: 0px;
+	font-style: italic;
+}
+
+#content .atomentry .content {
+
+	margin-right: -1px;
+	/*border-right: 2px solid #540411;
+	border-bottom: 2px solid #540411;
+	border-left: 2px solid #540411;
+*/
+
+}
+
+#content .atomentry .content p {
+	padding-top: 1em;
+	font-size: 14px;
+}
+
+#content ul.meta { 
+	font-size: 10px;
+	position: relative;
+	text-align: right;
+	list-style-type: none;
+	color: #fff;
+	clear: left;
+}
+
+#content .atomentry ul.meta li { 
+	padding-left: 15px;
+	margin-left: 0px;
+	padding-right: 1.4em;
+	margin-right: -1.4em;
+	float: right;
+	clear:both;
+}
+
+#content .atomentry .meta a:link,
+#content .atomentry .meta a:visited {
+	color: #fff;
+}
+#content .atomentry .commentslink a:link,
+#content .atomentry .commentslink a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+#content .atomentry .meta a:hover,
+#content .atomentry .meta a:active {
+	color: #fff;
+	text-decoration: none;
+}
+#content .atomentry .commentslink a:hover,
+#content .atomentry .commentslink a:active {
+	color: #fff;
+	text-decoration: none;
+}
+
+.user {
+	border-top: 2px solid #b94646;
+	background: #f17e7e url(/images/theme/corner2.png) no-repeat top left !important;
+}
+.commentslink {
+	border-top: 2px solid #333;
+	height: 15px;
+	clear: left;
+	padding-left: 25px;
+	padding-right: 1.4em;
+	margin-right: -1.4em;
+	float: right;
+	background: #111 url(/images/theme/corner2.png) no-repeat top left !important;
+}
+.categories {
+	border-bottom: 2px solid #af1010;
+	background: #d71414 url(/images/theme/corner.png) no-repeat top left !important;
+}
+.tags {
+	width: 97%;
+	float: right !important;
+	border-bottom: 2px solid #540411;
+	background: #88061b url(/images/theme/corner.png) no-repeat top left !important;
+}
+
+
+/* Comments and Trackbacks */
+#content ol.comments,
+#content ol.trackbacks {
+	list-style-type: none;
+	margin: 0; padding: 0;
+}
+
+#content .comment,
+#content .trackback {
+	border: 2px solid #ddd;
+	margin: 1 0 1.5em;
+	padding: 1em;
+}
+
+#content .comment.preview { 
+	background: #ffc;
+	border: 3px solid #fab444;
+}
+
+#content .comment   .author,
+#content .trackback .author { 
+	font-size: 10px;
+}
+
+#content .comment   .author cite,
+#content .trackback .author cite {
+	font-size: 10px;
+}
+
+#content .comment   .author abbr, 
+#content .trackback .author abbr { color: #fff; }
+
+#content .comment .author .gravatar { 
+	margin: 0 0 0.5em 0.5em;
+	float: right; 
+}
+
+/* uncomment to enable a default gravatar
+#content .comment .author div {
+	margin: 0 0 0.5em 0.5em;
+ 	width: 60px; height: 60px;
+	background: url(/images/theme/gravatar.gif) no-repeat left top;
+	float: right; 
+}*/
+
+
+#content form.comments {
+	background: transparent;
+	padding: 1em 0.5em;
+}
+
+#content form.comments fieldset { 
+	border: none;
+}
+
+#content form.comments legend { 
+	display: none;
+}
+
+#content form.comments label { 
+	font-weight: bold;
+}
+
+#content form.comments textarea { 
+	width: 90%; height: 150px;
+	padding: 3px;
+}
+
+
+#content .typocode {
+  background-color:#000;
+  padding:2px;
+  margin:5px;
+  margin-left:1em;
+  margin-bottom:1em;
+}
+
+#content pre {
+  white-space: pre;
+  overflow: auto;
+  display: block;
+}
+
+#content .typocode .lineno {
+  text-align: right;
+  font-family: monospace;
+  padding-right: 1em;
+}
+
+/*--------------------------------------------------------------
+  Sidebar
+  --------------------------------------------------------------*/
+#footer {
+  font-size: 11px; 
+}
+
+#footer a:link, #sidebar a:visited { color: #89071c; text-decoration: none;}
+#footer a:hover, #sidebar a:active  { color: #89071c; text-decoration: underline;}
+
+#footer h3 { 
+	font: bold 16px "lucidamac bold", "lucida grande", verdana, arial, helvetica, sans-serif;
+	color: #fff;
+	clear: right;
+}
+
+#footer h3 a:link,
+#footer h3 a:visited {
+	color: #B20225; text-decoration: none;
+}
+
+#footer h3 a:hover,
+#footer h3 a:active {
+ text-decoration: underline;
+}
+
+#footer ul {
+	list-style-type: none; 
+	clear: both;
+	margin: 0 0 2em; padding: 0;
+}
+
+.static-body { color: #fff; float: right;clear: both;
+}
+.static-body a:link, a:visited { color: #89071c; text-decoration: none;}
+.static-body a:hover, a:active  { color: #89071c; text-decoration: underline;}
+
+.sidebar-title { color: #fff;}
+
+#footer li { 
+	margin: 0;
+	padding: 1px 0;
+}
+
+#footer td {
+	width: 266px;
+	vertical-align: top;
+	padding: 0.5em;
+}
+
+#footer em { font-style: normal; }
+
+/* Live-search and results */
+#header .search p { 
+	position: absolute;
+	top: 110px;
+	margin-left: 1.2em;
+	float: left;
+	width: 12em;
+}
+
+#header .search p input {
+	font-size: 11px; width: 92%;
+}
+
+#header .loading {
+	background: url(/images/theme/spinner.gif) no-repeat left 50%;
+	margin: -1em 2em;
+  padding: 0 0 0 20px;
+	height: 15px;
+}
+
+#header .search .results { 
+	margin: 0;
+	position: absolute;
+	top: 125px;
+	margin-left: 160px;
+	clear: both;
+	z-index: 1;
+	color: #fff;
+}
+
+#header .search .results h3 {
+	margin: 0;
+	padding-left: 0.5em;
+	border-left: 3px solid #88061b;
+	border-right: 3px solid #88061b;
+	border-top: 3px solid #88061b;
+	background-color: #111;
+}
+
+#header .search .results p { 
+	background-color: #111;
+	font: bold 14px "lucidamac bold", "lucida grande", verdana, arial, helvetica, sans-serif;
+	margin: 0 0 0.5em;
+}
+
+#header .search .results ul { 
+	margin: 0;
+	padding: 3px;
+	list-style-type: none; 
+	background: #111;
+	border-left: 3px solid #88061b;
+	border-right: 3px solid #88061b;
+	border-bottom: 3px solid #88061b;
+}
+
+#header .search .results li { padding: 0.2em; }
+
+#header .search .results a:link,
+#header .search .results a:visited {
+	color: #fff;
+}
+
+#header .search .results a:hover, 
+#header .search .results a:active  {
+	text-decoration: underline;
+}
+
+/* Flickr sidebar-node */
+#sidebar #flickr {
+	margin: 0 0 2em;
+	clear: both;
+}
+
+#sidebar #flickr div {
+}
+
+#sidebar #flickr img { 
+	margin: 0 0 5px;
+	padding: 5px;
+	border: 1px solid #ddd;
+	display: block;
+}
+        
+#sidebar #flickr img:hover {
+	background: #ffc;
+}
+        
+#sidebar #flickr a { 
+	border: none;
+}
+
+/*--------------------------------------------------------------
+ Footer
+ --------------------------------------------------------------*/
+
+#coolness {
+	width: 800px;
+	margin: auto;
+	height: 15px;
+	color: #fff;
+	font-size: 11px;
+	background: #333 url(/images/theme/corner.png) no-repeat top left !important;
+	border-bottom: 2px solid #222;
+}
+
+#coolness .desc {
+	font-size: 12px;
+	height: 13px;
+	margin-left: 15px;
+	float: left;
+}
+
+#coolness .sites {
+	float: right;
+}
+
+#coolness .sites ul {
+	list-style-type: none; 
+	padding: 0;
+	margin: 0;
+}
+
+#coolness .sites li {
+	background-color: #fff;
+	height: 15px;
+	margin-right: 2px;
+	clear: right;
+	float: left;
+}
+
+#coolness .sites li a img {
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+#footer {
+	font-size: 90%;
+  color: #fff;
+}
+
+#footer a:link,
+#footer a:visited { 
+	color: #fff;
+	text-decoration: underline;
+}
+
+#footer a:hover,
+#footer a:active { 
+	text-decoration: none;
+}
+
+#footer hr {
+	display: none;
+}
+
+#footer p {
+	clear: left;
+	margin: 0; padding: 0; 
+	padding-right: 1em;
+	float: right;
+	text-align: right; 
+}
+
+
+#footer ul {
+	margin: 0; padding: 0;
+	list-style-type: none; 
+	text-align: right; 
+}
+
+#footer li {
+	margin: 0; padding: 0 0 0 1em;
+}
+
+.pagination {
+	text-align: center;
+}
+

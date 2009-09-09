@@ -1,4 +1,26 @@
 module SidebarHelper
+  def split_by_header(string)
+    parts = string.split("<h3")
+    retval = "<table>"
+    index = 0
+    colors = [nil,"FF0066","FF3333","FF6600","006666","003366","3366FF"]
+    parts.each_with_index do |part, idx|
+      unless part.to_s == ""
+        if index == 0 
+          retval << "<tr>"
+        end
+        #retval << "<td><h3 style=\"background: ##{colors[idx]} url(/images/theme/black-corner.png) no-repeat top left; height: 20px; border-top: 2px solid #666; padding-left: 25px;margin-bottom: 13px;\"" << part << "</td>"
+        retval << "<td><h3" << part << "</td>"
+        index += 1
+        if index > 2
+          index = 0
+          retval << "</tr>"
+        end
+      end
+    end
+    retval << "</table>"
+  end
+
   def render_sidebars(*sidebars)
     begin
       (sidebars.blank? ? Sidebar.find(:all, :order => 'active_position ASC') : sidebars).inject('') do |acc, sb|

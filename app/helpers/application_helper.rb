@@ -17,6 +17,16 @@ module ApplicationHelper
   def link_to_permalink(item, title, anchor=nil, style=nil, nofollow=nil)
     anchor = "##{anchor}" if anchor
     "<a href=\"#{item.permalink_url}#{anchor}\" rel=\"#{nofollow}\" class=\"#{style}\">#{title}</a>"
+    #anchor = "##{anchor}" if anchor
+    #retval = "<a href=\"#{item.permalink_url}#{anchor}\" "
+    #if nofollow
+    #  retval += "rel=\"#{nofollow}\" "
+    #end
+    #if style
+    #  retval+= "class=\"#{style}\""
+    #end
+    #retval += ">#{title}</a>"
+    #return retval
   end
 
   # The '5 comments' link from the bottom of articles
@@ -167,11 +177,11 @@ module ApplicationHelper
   end
 
   def feed_atom
-    url_for(:format => :atom, :only_path => false)
+    "http://feeds.feedburner.com/aczid_blog"
   end
 
   def feed_rss
-    url_for(:format => :rss, :only_path => false)
+    "http://feeds.feedburner.com/aczid_blog"
   end
   
 end

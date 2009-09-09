@@ -1,0 +1,36 @@
+<div class="atomentry" id="article-<%= article.id %>">
+  <ul class="meta">
+    <%= content_tag(:li, category_links(article), :class => 'categories') unless article.categories.empty? %>
+    <%= content_tag(:li, tag_links(article), :class => 'tags') unless article.tags.empty? %>
+  <li class="user">
+  <%= _("Posted by")%> <cite><%= author_link(article) %></cite>&nbsp;
+    (<abbr class="published" title="<%= article.published_at.xmlschema %>"><%= js_distance_of_time_in_words_to_now article.published_at %></abbr>)
+  </li>
+
+  </ul>
+  <h2 class="title">
+    <%= (controller.action_name.include? 'permalink') ? article.title : link_to_permalink(article,article.title) %>
+    <% content_tag(:span, article.published_comments.size, :class => 'comment_count') if article.published_comments.size > 0 %>
+  </h2>
+
+  <div class="content">
+    <%= article.html(:body) %>
+
+    <% if article.extended? -%>
+      <div class="extended">
+        <% if controller.action_name == 'index' -%>
+          <p><%= link_to_permalink article, _("Continue reading...") %></p>
+        <% else -%>
+          <%= article.html(:extended) %>
+        <% end -%>
+      </div>
+    <% end -%>
+  </div>
+    <p class="commentslink"><% _("Meta") %>
+    <%= trackbacks_link(article) << ', ' if article.allow_pings? && article.published_trackbacks.size > 0 %>
+      <%= comments_link(article) if article.allow_comments? %>
+    </p>
+    <br/>
+
+</div>
+

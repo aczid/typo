@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title><%=h page_title %></title>
+  <%= page_header %>
+  <%= stylesheet_link_tag '/stylesheets/theme/application.css', :media => 'all' %>
+</head>
+
+<body>
+  <div style="position: absolute; top: 0px; left:50%; margin-left: -694px; background: #000 url(/images/theme/left.png) no-repeat top right; width: 294px; height: 500px">
+  </div>
+  <div style="position: absolute; top: 0px; left:50%; margin-left: 400px; background: #000 url(/images/theme/right.png) no-repeat top right; width: 306px; height: 500px">
+  </div>
+<div id="container">
+  <div id="header">
+    <h1>
+      <%= link_to "<span>Aczid's blog</span>", this_blog.base_url %>
+    </h1>
+    <h2><%= link_to "<span>#{this_blog.blog_subtitle}</span>", this_blog.base_url %></h2>
+    <p style="position:absolute; top:110px; margin-left: 700px;"><a href="http://feeds.feedburner.com/aczid_blog"><img src="http://feeds.feedburner.com/~fc/aczid_blog?bg=000000&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" alt="My feedburner feed" style="display:block" /></a></p>
+      <!-- search -->
+      <%= render :partial => 'shared/search' %>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <%= @content_for_layout %>
+      <%= javascript_tag 'show_dates_as_local_time()' %>
+    </div>
+
+  </div>
+    <br style="clear:both;" />
+
+</div>
+  <div id="coolness">
+    <div class="desc">
+      Me elsewhere:
+    </div>
+    <div class="sites">
+      <ul>
+        <li><a href="http://del.icio.us/aczid" title="Aczid's del.icio.us profile"><img src="/images/theme/delicious.png" alt="del.icio.us logo"/></a></li>
+        <li><a href="http://digg.com/users/aczid/" title="Aczid's Digg profile"><img src="/images/theme/digg.png" alt="Digg logo"/></a></li>
+        <li><a href="http://www.flickr.com/photos/43796592@N00/" title="Aczid's Flickr profile"><img src="/images/theme/flickr.png" alt="Flickr logo"/></a></li>
+        <li><a href="http://friendfeed.com/aczid" title="Aczid's FriendFeed profile"><img src="/images/theme/friendfeed.png" alt="FriendFeed logo"/></a></li>
+        <li><a href="https://github.com/aczid" title="Aczid's GitHub profile"><img src="/images/theme/github.png" alt="GitHub logo"/></a></li>
+        <li><a href="http://last.fm/user/aczid" title="Aczid's Last.fm profile"><img src="/images/theme/lastfm.png" alt="Last.fm logo"/></a></li>
+        <li><a href="http://www.linkedin.com/in/averstegen" title="Aczid's LinkedIn profile"><img src="/images/theme/linkedin.png" alt="LinkedIn logo"/></a></li>
+        <li><a href="http://stackoverflow.com/users/64234/aram-verstegen" title="Aczid's StackOverflow profile"><img src="/images/theme/stackoverflow.png" alt="StackOverflow logo"/></a></li>
+        <li><a href="http://smart.fm/users/aczid" title="Aczid's Smart.fm profile"><img src="/images/theme/smartfm.png" alt="Smart.fm logo"/></a></li>
+        <%=
+          #<li><a href="" title="Aczid's StumbleUpon profile"><img src="/images/theme/stumbleupon.png" alt="StumbleUpon logo"/></a></li>
+          -%>
+        <li><a href="http://twitter.com/aczid" title="Aczid's Twitter profile"><img src="/images/theme/twitter.png" alt="Twitter logo"/></a></li>
+        <li><a href="http://www.youtube.com/aczid" title="Aczid's YouTube profile"><img src="/images/theme/youtube.png" alt="YouTube logo"/></a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="footer">
+      <!-- sidebar components -->
+      <%= split_by_header render_sidebars %>
+  </div>
+</body>
+</html>
+

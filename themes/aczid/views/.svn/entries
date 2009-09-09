@@ -1,0 +1,34 @@
+9
+
+dir
+113
+svn+ssh://localhost/var/svn-repos/blog_site/themes/aczid/views
+svn+ssh://localhost/var/svn-repos/blog_site
+
+
+
+2009-05-10T16:15:07.096205Z
+112
+aczid
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+b3302323-029f-44b7-9e6f-15e4385c1aad
+
+articles
+dir
+
+shared
+dir
+
