@@ -16,17 +16,10 @@ module ApplicationHelper
   # Produce a link to the permalink_url of 'item'.
   def link_to_permalink(item, title, anchor=nil, style=nil, nofollow=nil)
     anchor = "##{anchor}" if anchor
-    "<a href=\"#{item.permalink_url}#{anchor}\" rel=\"#{nofollow}\" class=\"#{style}\">#{title}</a>"
-    #anchor = "##{anchor}" if anchor
-    #retval = "<a href=\"#{item.permalink_url}#{anchor}\" "
-    #if nofollow
-    #  retval += "rel=\"#{nofollow}\" "
-    #end
-    #if style
-    #  retval+= "class=\"#{style}\""
-    #end
-    #retval += ">#{title}</a>"
-    #return retval
+    class_attr = "class=\"#{style}\"" if style
+    rel_attr = "rel=\"#{nofollow}\"" if nofollow
+
+    "<a href=\"#{item.permalink_url}#{anchor}\" #{rel_attr} #{class_attr}>#{title}</a>"
   end
 
   # The '5 comments' link from the bottom of articles
@@ -103,10 +96,14 @@ module ApplicationHelper
   end
 
   def feed_title
-    return @feed_title if @feed_title
-    return @page_title \
-      ? "#{this_blog.blog_name} : #{@page_title}" \
-      : this_blog.blog_name
+    case
+    when @feed_title
+      return @feed_title
+    when (@page_title and not @page_title.blank?)
+      return "#{this_blog.blog_name} : #{@page_title}"
+    else
+      return this_blog.blog_name
+    end
   end
 
   def html(content, what = :all, deprecated = false)
@@ -168,6 +165,7 @@ module ApplicationHelper
   #{ javascript_tag "window._token = '#{form_authenticity_token}'"}
   #{ javascript_include_tag "prototype" }
   #{ javascript_include_tag "effects" }
+  #{ javascript_include_tag "builder" }
   #{ javascript_include_tag "typo" }
   #{ page_header_includes.join("\n") }
   <script type="text/javascript">#{ @content_for_script }</script>

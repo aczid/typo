@@ -7,12 +7,13 @@
   <meta http-equiv="imagetoolbar" content="no" />
   <%= stylesheet_link_tag "growler", "administration", "lightbox" %>
   <%= stylesheet_link_tag "administration_rtl" if ( _("Localization.rtl") == "1") %>
-  <%= javascript_include_tag "prototype", "effects", "dragdrop", "controls", "typo", "lightbox", "quicktags", "growler", "administration", :fckeditor %>
+  <%= javascript_include_tag "prototype", "effects", "dragdrop", "controls", "typo", "lightbox", "quicktags", "growler", "administration", :ckeditor %>
   <%= calendar_date_select_includes %>
 </head>
 
 <body>
   <div id="container">
+
     <div id="topnav">
       <ul id="tabs">
         <li class="right"><%= link_to _('your blog'), this_blog.base_url %></li>
@@ -23,14 +24,14 @@
         <% end %>
       </ul>
     </div>
-    <% if (@_first_render =~ /login|signup|logout/) %>
-    <% else %>
-    <div id="subtabs">
-      <ul>
-        <%= yield :tasks %>
-      </ul>
-      <div style="clear:both;"></div>
-    </div>
+
+    <% unless (@_first_render =~ /login|signup|logout/) %>
+      <div id="subtabs">
+        <ul>
+          <%= yield :tasks %>
+        </ul>
+        <div style="clear:both;"></div>
+      </div>
     <% end %>
 
     <div id="overall">

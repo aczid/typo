@@ -83,31 +83,6 @@ describe RedirectController do
     assert_redirected_to "http://test.host/aaa/articles/bbb/2004/04/01/second-blog-article"
   end
 
-  describe 'render article' do
-
-    integrate_views
-
-    before(:each) do
-      b = blogs(:default)
-      b.permalink_format = '/%title%.html'
-      b.save
-      get :redirect, :from => ["#{contents(:article1).permalink}.html"]
-    end
-
-    it 'should render template read to article' do
-      response.should render_template('articles/read.html.erb')
-    end
-
-    it 'should have good rss feed' do
-      response.should have_tag('head>link[href=?]', "http://myblog.net/#{contents(:article1).permalink}.html.rss")
-    end
-
-    it 'should have good atom feed' do
-      response.should have_tag('head>link[href=?]', "http://myblog.net/#{contents(:article1).permalink}.html.atom")
-    end
-
-  end
-
   describe 'with permalink_format like %title%.html' do
 
     integrate_views
@@ -129,22 +104,22 @@ describe RedirectController do
         response.should render_template('articles/read.html.erb')
       end
 
-      it 'should have good rss feed' do
+      it 'should have good rss feed link' do
         response.should have_tag('head>link[href=?]', "http://myblog.net/#{contents(:article1).permalink}.html.rss")
       end
 
-      it 'should have good atom feed' do
+      it 'should have good atom feed link' do
         response.should have_tag('head>link[href=?]', "http://myblog.net/#{contents(:article1).permalink}.html.atom")
       end
 
     end
 
-    it 'should get good article with utf8 title' do
+    it 'should get good article with utf8 slug' do
       get :redirect, :from => ['2004', '06', '02', 'ルビー']
       assigns(:article).should == contents(:utf8_article)
     end
 
-    describe 'render atom feed' do
+    describe 'rendering as atom feed' do
       before(:each) do
         get :redirect, :from => ["#{contents(:article1).permalink}.html.atom"]
       end
@@ -152,16 +127,39 @@ describe RedirectController do
       it 'should render atom partial' do
         response.should render_template('articles/_atom_feed.atom.builder')
       end
+
+      it 'should render a valid feed' do
+        assert_feedvalidator response.body
+      end
     end
 
-    describe 'render rss feed' do
+    describe 'rendering as rss feed' do
       before(:each) do
         get :redirect, :from => ["#{contents(:article1).permalink}.html.rss"]
       end
 
-      it 'should render atom partial' do
+      it 'should render rss20 partial' do
         response.should render_template('articles/_rss20_feed.rss.builder')
       end
+
+      it 'should render a valid feed' do
+        assert_feedvalidator response.body
+      end
     end
+
+    describe 'rendering comment feed with problematic characters' do
+      before(:each) do
+        @comment = contents(:article1).comments.first
+        @comment.body = "&eacute;coute! 4 < 2, non?"
+        @comment.save!
+        get :redirect, :from => ["#{contents(:article1).permalink}.html.atom"]
+      end
+
+      it 'should result in a valid atom feed' do
+        assigns(:article).should == contents(:article1)
+        assert_feedvalidator response.body
+      end
+    end
+
   end
 end

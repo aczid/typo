@@ -314,7 +314,8 @@ class Content < ActiveRecord::Base
       rss_groupings(xml)
       rss_enclosure(xml)
       rss_trackback(xml)
-      xml.link permalink_url
+      # TODO: Perhaps permalink_url should produce valid URI's instead of IRI's
+      xml.link Addressable::URI.parse(permalink_url).normalize
     end
   end
 
@@ -346,10 +347,8 @@ class Content < ActiveRecord::Base
   def atom_enclosures(xml)
   end
 
-  def atom_content(xml)
-    xml.content(:type => 'xhtml') do
-      xml.div(:xmlns => 'http://www.w3.org/1999/xhtml') { xml << html(:all) }
-    end
+  def atom_content(entry)
+    entry.content(html(:all), :type => 'html')
   end
 end
 

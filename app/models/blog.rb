@@ -62,7 +62,7 @@ class Blog < ActiveRecord::Base
   setting :default_moderate_comments,  :boolean, false
   setting :link_to_author,             :boolean, false
   setting :show_extended_on_rss,       :boolean, true
-  setting :theme,                      :string, 'typographic'
+  setting :theme,                      :string, 'true-blue-3'
   setting :use_gravatar,               :boolean, false
   setting :global_pings_disable,       :boolean, false
   setting :ping_urls,                  :string, "http://blogsearch.google.com/ping/RPC2\nhttp://rpc.technorati.com/rpc/ping\nhttp://ping.blo.gs/\nhttp://rpc.weblogs.com/RPC2"
@@ -202,12 +202,12 @@ class Blog < ActiveRecord::Base
 
   def permalink_has_identifier
     unless permalink_format =~ /(%year%|%month%|%day%|%title%)/
-      errors.add(:permalink_format, _('You need a Format of permalink with an identifier : %%month%%, %%year%%, %%day%%, %%title%%'))
+      errors.add(:permalink_format, _("You need a permalink format with an identifier : %%month%%, %%year%%, %%day%%, %%title%%"))
     end
 
-    # A permalink can be finish by .atom or .rss. it's reserved to feed
+    # A permalink cannot end in .atom or .rss. it's reserved for the feeds
     if permalink_format =~ /\.(atom|rss)$/
-      errors.add(:permalink_format, _("Can't finish by .rss or .atom. It's reserved to be use by feed"))
+      errors.add(:permalink_format, _("Can't end in .rss or .atom. These are reserved to be used for feed URLs"))
     end
   end
 

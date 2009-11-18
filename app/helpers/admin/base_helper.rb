@@ -107,13 +107,9 @@ module Admin::BaseHelper
   end
   
   def class_content
-    if controller.controller_name  =~ /content|pages|categories|resources/
+    if controller.controller_name  =~ /content|pages|categories|resources|feedback/
       "current" if controller.action_name =~ /list|index|show/
     end
-  end
-
-  def class_feedback
-    "current" if controller.controller_name  =~ /feedback/
   end
 
   def class_themes
@@ -138,7 +134,7 @@ module Admin::BaseHelper
   
 
   def t_textarea(object_name, method, options)
-    return fckeditor_textarea(object_name, method, options) if current_user.editor == 'visual'
+    return ckeditor_textarea(object_name, method, options) if current_user.editor == 'visual'
     text_area(object_name, method, options)
   end
 
