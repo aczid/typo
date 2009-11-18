@@ -27,6 +27,6 @@ namespace :vlad do
     run "sudo #{app_command} restart"
   end
 
-  task :deploy => [:update, :link_config_files, :migrate, :start_app]  
+  task :deploy => [:update, :link_config_files, :start_app]  
 end
 
