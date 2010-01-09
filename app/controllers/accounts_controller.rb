@@ -27,6 +27,7 @@ class AccountsController < ApplicationController
         end
         add_to_cookies(:typo_user_profile, self.current_user.profile.label, '/')
 
+        self.current_user.update_connection_time
         flash[:notice]  = _("Login successful")
         redirect_back_or_default :controller => "admin/dashboard", :action => "index"
       else
@@ -52,6 +53,14 @@ class AccountsController < ApplicationController
       if @user.save
         self.current_user = @user
         session[:user_id] = @user.id
+        
+        # Crappy hack : by default, the auto generated post is user_id less and it makes Typo crash
+        if User.count == 1
+          art = Article.find(:first)
+          art.user_id = @user.id
+          art.save
+        end
+        
         redirect_to :controller => "accounts", :action => "confirm"
         return
       end

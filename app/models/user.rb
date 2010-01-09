@@ -21,10 +21,17 @@ class User < ActiveRecord::Base
   # echo "typo" | sha1sum -
   @@salt = '20ac4d290c2293702c64b3b287ae5ea79b26a5c1'
   cattr_accessor :salt
+  attr_accessor :last_venue
 
   def self.authenticate(login, pass)
     find(:first,
          :conditions => ["login = ? AND password = ? AND state = ?", login, sha1(pass), 'active'])
+  end
+
+  def update_connection_time
+    self.last_venue = last_connection
+    self.last_connection = Time.now
+    self.save
   end
 
   # These create and unset the fields required for remembering users between browser closes
