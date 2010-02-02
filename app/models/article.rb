@@ -219,9 +219,9 @@ class Article < Content
 
   def html_urls
     urls = Array.new
-    html.gsub(/<a [^>]*>/) do |tag|
-      if(tag =~ /href="([^"]+)"/)
-        urls.push($1)
+    html.gsub(/<a\s+[^>]*>/) do |tag|
+      if(tag =~ /\bhref=(["']?)([^ >"]+)\1/)
+        urls.push($2)
       end
     end
 
@@ -408,7 +408,7 @@ class Article < Content
 
   # The web interface no longer distinguishes between separate "body" and
   # "extended" fields, and instead edits everything in a single edit field,
-  # separating the extended content using "<!--more-->".
+  # separating the extended content using "\<!--more-->".
   def body_and_extended
     if extended.nil? || extended.empty?
       body
@@ -417,7 +417,7 @@ class Article < Content
     end
   end
 
-  # Split apart value around a "<!--more-->" comment and assign it to our
+  # Split apart value around a "\<!--more-->" comment and assign it to our
   # #body and #extended fields.
   def body_and_extended= value
     parts = value.split(/\n?<!--more-->\n?/, 2)
@@ -451,9 +451,7 @@ class Article < Content
   end
 
   def rss_comments(xml)
-    iri = permalink_url
-    uri = Addressable::URI.parse(iri).normalize
-    xml.comments(uri + "#comments")
+    xml.comments(normalized_permalink_url + "#comments")
   end
 
   def link_to_author?
